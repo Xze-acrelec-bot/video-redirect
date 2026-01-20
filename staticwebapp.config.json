@@ -2,9 +2,9 @@
   "routes": [
     {
       "route": "/healthz",
-      "rewrite": "/index.html"
+      "rewrite": "/index.html",
+      "statusCode": 302
     },
-
     {
       "route": "/video/{*file}.mp4",
       "redirect": "https://storagevideov1.blob.core.windows.net/videos/{file}",
@@ -12,4 +12,3 @@
     }
   ]
 }
-
