@@ -6,7 +6,7 @@ module.exports = async function (context, req) {
     return;
   }
  
-  const redirectUrl = `https://storagevideo1.blob.core.windows.net/videos/${file}`;
+  const redirectUrl = `https://storagevideov1.blob.core.windows.net/videos/${file}`;
  
   context.res = {
     status: 302,
