@@ -1,0 +1,10 @@
+
+{
+  "routes": [
+    {
+      "route": "/video/:file",
+      "redirect": "https://storagevideov1.blob.core.windows.net/videos/:file",
+      "statusCode": 302
+    }
+  ]
+}
