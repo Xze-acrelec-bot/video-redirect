@@ -7,10 +7,6 @@
      {
       "route": "/videos",
       "rewrite": "/videos.html"
-    },
-    {
-      "route": "/videos/",
-      "rewrite": "/videos.html"
     }
   ]
 }
