@@ -1,6 +1,6 @@
 module.exports = async function (context, req) {
   try {
-    const STORAGE_ACCOUNT = "storagevideo1";
+    const STORAGE_ACCOUNT = "storagevideov1";
     const CONTAINER = "videos";
  
     const marker = req.query.marker ? `&marker=${encodeURIComponent(req.query.marker)}` : "";
