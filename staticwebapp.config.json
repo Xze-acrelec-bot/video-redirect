@@ -3,6 +3,14 @@
     {
       "route": "/video/*",
       "allowedRoles": ["anonymous"]
+    },
+     {
+      "route": "/videos",
+      "rewrite": "/videos.html"
+    },
+    {
+      "route": "/videos/",
+      "rewrite": "/videos.html"
     }
   ]
 }
