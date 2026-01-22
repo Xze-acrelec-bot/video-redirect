@@ -109,6 +109,20 @@
 .card{
   overflow:visible;
 }
+    .navHome{
+      display:inline-block;
+      margin-top:12px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      text-decoration:none;
+      backdrop-filter: blur(8px);
+    }
+    .navHome.hover{
+      background:rgba(255,255,255,.10);
+    }
 </style>
 </head>
 
@@ -117,6 +131,7 @@
     <header>
       <div>
         <h1>QR Codes</h1>
+        <a class="navHome" href="/"> <- Accueil </a>
         <div class="sub">Scanne un QR pour ouvrir la vidéo via l’URL propre (API redirect).</div>
       </div>
 
