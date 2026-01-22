@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Videos</title>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.10);
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:22px;
+      --accent:#38bdf8;
+      --good:#22c55e;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(56,189,248,.18), transparent 60%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      gap:16px;
+    }
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+    }
+    h1{margin:0;font-size:34px;letter-spacing:.2px}
+    p{margin:10px 0 0; color:var(--muted); line-height:1.5; max-width:80ch}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap:14px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .label{
+      font-size:12px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .title{font-weight:900;font-size:18px}
+    .desc{color:var(--muted);font-size:14px;line-height:1.45}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      text-decoration:none;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn:hover{border-color:rgba(56,189,248,.55)}
+    .btn.primary{border-color:rgba(56,189,248,.55); background:rgba(56,189,248,.12)}
+    .btn.good{border-color:rgba(34,197,94,.55); background:rgba(34,197,94,.10)}
+    footer{color:var(--muted); font-size:12px; padding:2px 4px}
+    code{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>QR Videos</h1>
+      <p>Choisis ce que tu veux afficher : la page des <b>QR codes</b> (liens propres vers <code>/api/video/</code>) ou la page des <b>vidéos</b> (player).</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="label">Option 1</div>
+        <div class="title">QR codes</div>
+        <div class="desc">Affiche la liste des vidéos + un QR pour chaque vidéo. Le QR ouvre directement la vidéo via l’URL propre.</div>
+        <div class="actions">
+          <a class="btn good" href="/qrcode/">Ouvrir /qrcode</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="label">Option 2</div>
+        <div class="title">Vidéos</div>
+        <div class="desc">Accéder au player et aux vidéos (ton setup actuel).</div>
+        <div class="actions">
+          <a class="btn primary" href="/videos">Ouvrir /videos</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>Astuce : tu peux aussi partager une vidéo directement via <code>https://qrvideos.acrelec.com/api/video/NOM.mp4</code></footer>
+  </div>
+</body>
+</html>
