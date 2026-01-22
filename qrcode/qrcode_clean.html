@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QR Codes — QR Videos</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, Segoe UI, Roboto, Arial;
+  background: #0b1220;
+  color: #e7eefc;
+}
+
+header {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 { margin-bottom: 6px; }
+
+.grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.card {
+  background: #111f36;
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+canvas {
+  background: white;
+  padding: 8px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #1b2b4d;
+  color: white;
+  cursor: pointer;
+}
+button:hover { background: #21375f; }
+
+.url {
+  font-size: 12px;
+  word-break: break-all;
+  opacity: .7;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>QR Codes</h1>
+  <p>QR → ouvre https://qrvideos.acrelec.com/videos?player=NomDuFichier</p>
+</header>
+
+<div id="grid" class="grid"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+<script>
+const API = "https://qrvideos.acrelec.com/api/videos";
+const PLAYER = "https://qrvideos.acrelec.com/videos";
+
+const grid = document.getElementById("grid");
+
+function buildUrl(name) {
+  return PLAYER + "?player=" + encodeURIComponent(name);
+}
+
+async function loadVideos() {
+  const res = await fetch(API);
+  const videos = await res.json();
+
+  grid.innerHTML = "";
+
+  videos.forEach(name => {
+    const url = buildUrl(name);
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const title = document.createElement("div");
+    title.textContent = name;
+
+    const canvas = document.createElement("canvas");
+
+    const link = document.createElement("div");
+    link.className = "url";
+    link.textContent = url;
+
+    const openBtn = document.createElement("button");
+    openBtn.textContent = "Ouvrir";
+    openBtn.onclick = () => window.open(url, "_blank");
+
+    const dlBtn = document.createElement("button");
+    dlBtn.textContent = "Télécharger QR";
+    dlBtn.onclick = () => {
+      canvas.toBlob(blob => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "QR_" + name + ".png";
+        a.click();
+      });
+    };
+
+    QRCode.toCanvas(canvas, url, { width: 220 });
+
+    card.appendChild(title);
+    card.appendChild(canvas);
+    card.appendChild(link);
+    card.appendChild(openBtn);
+    card.appendChild(dlBtn);
+
+    grid.appendChild(card);
+  });
+}
+
+loadVideos();
+</script>
+
+</body>
+</html>
