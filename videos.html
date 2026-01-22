@@ -195,7 +195,21 @@
       background:rgba(255,107,107,.10);
       padding:10px 12px;border-radius:12px;
       font-size:12px;
+      .navHome{
+      display:inline-block;
+      margin-top:12px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      text-decoration:none;
+      backdrop-filter: blur(8px);
     }
+    .navHome.hover{
+      background:rgba(255,255,255,.10);
+    }
+   }
   </style>
 </head>
 <body>
@@ -203,6 +217,7 @@
     <header>
       <div class="title">
         <h1>Bibliothèque vidéos</h1>
+        <a class="navHome" href="/"> <- Accueil </a>
         <div class="subtitle">Liste automatique depuis <span class="kbd">/api/videos</span> • lecture via <span class="kbd">/api/video/…</span></div>
       </div>
       <div class="pill">
