@@ -260,7 +260,9 @@
         const a = document.createElement("a");
         a.download = `QR_${fileName}.png`;
         a.href = canvas.toDataURL("image/png");
+        document.body.appendChild(a);
         a.click();
+        a.remove();
       };
 
       actions.appendChild(openBtn);
